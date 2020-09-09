@@ -17,15 +17,31 @@ end
 data = request(url)
 
 def buid_web_page
-    
+    head ='<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Rover Photos</title>
+</head>
+<body>
+    <ul>'
+    foot ='</ul>
+</body>
+</html>'
+    return head + foot
 end
- 
-data.each do |key, value|
-    if key == "photos"
-        value.each do |photos|
-            photos.each do |key, value|
-                puts "la url de la foto es #{value}" if key == "img_src"
-            end
-        end
-    end
-end
+
+# data.each do |key, value|
+#     if key == "photos"
+#         value.each do |photos|
+#             photos.each do |key, value|
+#                 puts "<li> #{value}</li>" if key == "img_src"
+#             end
+#         end
+#     end
+# end
+
+index = buid_web_page()
+
+File.write('./index.html', index)
