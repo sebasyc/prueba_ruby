@@ -18,6 +18,7 @@ def buid_web_page
     html ="<!DOCTYPE html>
     <html>
     <head>
+        <link rel='stylesheet' href='style.css'>
         <title>Mars Rover Photos</title>
     </head>
     <body>
@@ -28,9 +29,9 @@ def buid_web_page
             value.each do |photos|
                 photos.each do |key, value|
                     if key == "img_src"
-                        html += "<li>\n"
-                        html += "<img src='#{value}'>\n"
-                        html += "</li>\n"
+                        html += "\t\t\t<li>\n"
+                        html += "\t\t\t\t<img src='#{value}'>\n"
+                        html += "\t\t\t</li>\n"
                     end
                 end
             end
