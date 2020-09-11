@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    counter-reset: section;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 ul {
@@ -13,8 +15,24 @@ ul {
 }
 
 ul li {
+    position: relative;
     width: 20%;
-    padding: 1em;
+    margin: 1em .5em;
+}
+ul li:before {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+    top: 5px;
+    right: 5px;
+    counter-increment: section;
+    content: counter(section);
 }
 
 ul li img {

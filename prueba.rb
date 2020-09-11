@@ -51,24 +51,32 @@ index = buid_web_page()
 
 File.write('./index.html', index)
 
-hash_nasa = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=w2nVBEvhq59h1SFuEmT3BqVFXehndb3O8gMOAYhA')
+def photos_count
+    hash_nasa = request('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=w2nVBEvhq59h1SFuEmT3BqVFXehndb3O8gMOAYhA')
 
-count_names = {}
+    a_camera = []
+    names = 0
+    hash_names = {}
 
-hash_nasa.each do |arr, value|
-    if arr == "photos"
-        value.each do |photo|
-            photo.each do |key, cam|
-                if key == "camera"
-                    cam.each do |k, v|
-                        if k == "name"
-                            count_names[v] = v
+    hash_nasa.each do |arr, value|
+        if arr == "photos"
+            value.each do |photo|
+                photo.each do |key, cam|
+                    if key == "camera"
+                        cam.each do |k, v|
+                            if k == "name"
+                                names = v
+                                a_camera = a_camera.append(names) 
+                                hash_names[names] = a_camera.count(names)
+                            end
                         end
                     end
                 end
             end
         end
     end
+    return hash_names
 end
 
-puts count_names
+puts "Cantidad de fotos por cámara:"
+puts photos_count()
